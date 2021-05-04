@@ -2,8 +2,17 @@ package Modelo;
 
 public class Cuenta {
     private long id;
-    private long usario;
-    private long clave;
+    private String usuario;
+    private String clave;
+
+    public Cuenta() {
+    }
+
+    public Cuenta(long id, String usuario, String clave) {
+        this.id = id;
+        this.usuario = usuario;
+        this.clave = clave;
+    }
 
     public long getId() {
         return id;
@@ -13,19 +22,24 @@ public class Cuenta {
         this.id = id;
     }
 
-    public long getUsario() {
-        return usario;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setUsario(long usario) {
-        this.usario = usario;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public long getClave() {
+    public String getClave() {
         return clave;
     }
 
-    public void setClave(long clave) {
+    public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    @Override
+    public String toString() {
+        return id+" "+usuario+" "+clave;
     }
 }
