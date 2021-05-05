@@ -2,8 +2,8 @@ package Modelo;
 
 public class Cuenta {
     private long id;
-    private long usario;
-    private long clave;
+    private String usario;
+    private String clave;
 
     public long getId() {
         return id;
@@ -13,19 +13,19 @@ public class Cuenta {
         this.id = id;
     }
 
-    public long getUsario() {
+    public String getUsario() {
         return usario;
     }
 
-    public void setUsario(long usario) {
+    public void setUsario(String usario) {
         this.usario = usario;
     }
 
-    public long getClave() {
+    public String getClave() {
         return clave;
     }
 
-    public void setClave(long clave) {
+    public void setClave(String clave) {
         this.clave = clave;
     }
 }
