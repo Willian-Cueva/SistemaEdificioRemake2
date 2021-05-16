@@ -6,7 +6,7 @@
 package Controlador.ControladorDao;
 
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
+import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 
 /**
  *
@@ -17,7 +17,7 @@ public class Coneccion {
     private XStream xStream;
 
     public Coneccion() {
-        xStream = new XStream(new JsonHierarchicalStreamDriver());
+        xStream = new XStream(new JettisonMappedXmlDriver());
         xStream.setMode(XStream.NO_REFERENCES);
     }
   

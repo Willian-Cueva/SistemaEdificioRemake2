@@ -14,12 +14,12 @@ import Controlador.ControladorDao.CuentaDao;
 public class Main {
     public static void main(String[] args) {
         CuentaDao c = new CuentaDao();
-        
+//        
 //        c.setCuenta(null);
 //        c.getCuenta().setId(1);
 //        c.getCuenta().setUsario("Willian");
 //        c.getCuenta().setClave("1234");
-        
+//        
 //        if (c.guargar()) {
 //            System.out.println("Se guardo con exito");
 //        } else {

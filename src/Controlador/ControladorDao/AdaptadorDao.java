@@ -88,7 +88,7 @@ public class AdaptadorDao implements InterfaceDao<Object, Long> {
         ArrayList<Object> lista = new ArrayList<>();
         if (!estaVacio()) {
             try {
-                lista = (ArrayList) coneccion.getxStream().fromXML(new FileReader(coneccion.getREPO() + File.separatorChar + clazz.getSimpleName() + ".json"));
+                lista = (ArrayList<Object>) coneccion.getxStream().fromXML(new FileReader(coneccion.getREPO() + File.separatorChar + clazz.getSimpleName() + ".json"));
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(AdaptadorDao.class.getName()).log(Level.SEVERE, null, ex);
             }
