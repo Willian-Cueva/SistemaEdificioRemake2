@@ -28,4 +28,9 @@ public class Cuenta {
     public void setClave(String clave) {
         this.clave = clave;
     }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName()+": "+id+" "+usario+" "+clave;
+    } 
 }
