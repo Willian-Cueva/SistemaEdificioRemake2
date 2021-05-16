@@ -19,7 +19,8 @@ public class CuentaDao extends AdaptadorDao{
     }
     
     public boolean guargar(){
-        return this.insertar(cuenta);
+        if (cuenta.getClave().isEmpty()||cuenta.getUsario().isEmpty())return false;
+        else return this.insertar(cuenta);
     }
 
     public Cuenta getCuenta() {

@@ -6,9 +6,9 @@
 package Controlador.ControladorDao;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,17 +34,22 @@ public class AdaptadorDao implements InterfaceDao<Object, Long> {
     public Class getClazz() {
         return clazz;
     }
-    
+
     public boolean say_hi() {
-       return true;
-    }
-    
-    public boolean say_hi(int s){
         return true;
-    }   
-    
+    }
+
+    public boolean say_hi(int s) {
+        return true;
+    }
+
     public boolean raton() {
         return true;
+    }
+
+    private boolean estaVacio() {
+        File archivo = new File(coneccion.getREPO() + File.separatorChar + clazz.getSimpleName() + ".json");
+        return archivo.length() == 0;
     }
 
     @Override
@@ -56,7 +61,7 @@ public class AdaptadorDao implements InterfaceDao<Object, Long> {
             System.out.println(coneccion.getxStream().toXML(t));
             coneccion.getxStream().toXML(t, new FileOutputStream(coneccion.getREPO() + File.separatorChar + clazz.getSimpleName() + ".json"));
         } catch (FileNotFoundException ex) {
-            System.err.println("No se encontro el archivo "+clazz.getSimpleName()+".json en la direccion especificada "+ex);
+            System.err.println("No se encontro el archivo " + clazz.getSimpleName() + ".json en la direccion especificada " + ex);
 //            Logger.getLogger(AdaptadorDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -81,10 +86,12 @@ public class AdaptadorDao implements InterfaceDao<Object, Long> {
     @Override
     public ArrayList<Object> listar() {
         ArrayList<Object> lista = new ArrayList<>();
-        try {
-            lista = (ArrayList<Object>) coneccion.getxStream().fromXML(new FileInputStream(coneccion.getREPO()+File.separatorChar+clazz.getSimpleName()+".json"));
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(AdaptadorDao.class.getName()).log(Level.SEVERE, null, ex);
+        if (!estaVacio()) {
+            try {
+                lista = (ArrayList) coneccion.getxStream().fromXML(new FileReader(coneccion.getREPO() + File.separatorChar + clazz.getSimpleName() + ".json"));
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(AdaptadorDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return lista;
     }
